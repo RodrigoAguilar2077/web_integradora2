@@ -1,0 +1,1295 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTOPET UTT</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <nav>
+        <div class="menu-icon">&#9776;</div>
+        <ul>
+            <li class="logo"><img src="../static/img/logo_blanco2.png" alt="Logo"></li>
+            <li><a href="#section1">Inicio</a></li>
+            <li><a href="#section2-2">¿Como funciona?</a></li>
+            <li><a href="#section3">App Móvil</a></li>
+            <li><a href="#section4">Contacto</a></li>
+        </ul>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let lastScrollTop = 0;
+                const navbar = document.querySelector('nav');
+                
+                window.addEventListener('scroll', function() {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (scrollTop > lastScrollTop) {
+                        // Scroll hacia abajo
+                        navbar.classList.add('scrolled');
+                    } else {
+                        // Scroll hacia arriba
+                        navbar.classList.remove('scrolled');
+                    }
+                    
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Para evitar valores negativos
+                });
+            });
+        </script>
+    </nav>
+
+<!-- Sección 1: Presentación -->
+<section id="section1" class="hero">
+    <!-- Carrusel de imágenes -->
+    <div class="carousel-container">
+        <div class="carousel-slide active">
+            <img src="static/img/inicio_1.jpg" alt="Perro 1">
+        </div>
+        <div class="carousel-slide">
+            <img src="static/img/inicio_2.jpg" alt="Perro 2">
+        </div>
+        <div class="carousel-slide">
+            <img src="static/img/inicio_3.jpg" alt="Perro 3">
+        </div>
+        <div class="carousel-slide">
+            <img src="static/img/inicio_4.jpg" alt="Perro 4">
+        </div>
+
+        <!-- Overlay oscuro para mejorar legibilidad -->
+        <div class="carousel-overlay"></div>
+
+        <!-- Indicadores de diapositivas -->
+        <div class="carousel-indicators">
+            <span class="carousel-indicator active" data-index="0"></span>
+            <span class="carousel-indicator" data-index="1"></span>
+            <span class="carousel-indicator" data-index="2"></span>
+            <span class="carousel-indicator" data-index="3"></span>
+        </div>
+    </div>
+
+    <!-- Contenido del hero -->
+    <div class="hero-content">
+        <div class="content-wrapper">
+            <div class="text-content">
+                <h1>AUTOPET UTT</h1>
+                <p>Tu perro merece lo mejor, y eso incluye una alimentación precisa y constante. Nuestro comedero automático lo hace posible.</p>
+                <a href="#section3-qr" class="btn" aria-label="Descargar la app AutoPet UTT">Descarga la app aquí</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Sección hero responsiva */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            overflow: hidden;
+        }
+
+        /* Carrusel */
+        .carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Indicadores */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-indicator.active {
+            background-color: white;
+        }
+
+        /* Contenido hero */
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            z-index: 5;
+        }
+
+        /* Estilos del texto */
+        .text-content {
+            color: white;
+            text-align: center;
+        }
+
+        .text-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 10px;
+            text-shadow: 3px 5px 6px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .text-content p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-bottom: 20px;
+            text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Botón */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #FFD166;
+            color: #333;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #FFC233;
+            transform: translateY(-2px);
+        }
+
+        /* Responsividad */
+        @media (max-width: 1024px) {
+            .hero-content {
+                max-width: 90%;
+            }
+
+            .btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 50vh;
+            }
+
+            .text-content h1 {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+
+            .text-content p {
+                font-size: clamp(1rem, 2vw, 1.2rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 40vh;
+            }
+
+            .text-content h1 {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .text-content p {
+                font-size: clamp(0.9rem, 2vw, 1rem);
+            }
+
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .text-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .text-content p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                width: 100%;
+                display: block;
+                padding: 0.6rem;
+                font-size: 0.85rem;
+            }
+
+            .carousel-indicators {
+                bottom: 10px;
+                gap: 5px;
+            }
+
+            .carousel-indicator {
+                width: 8px;
+                height: 8px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                slides[index].classList.add('active');
+                indicators[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                let newIndex = (currentIndex + 1) % totalSlides;
+                showSlide(newIndex);
+            }
+
+            let autoplayInterval = setInterval(nextSlide, 5000);
+
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', function () {
+                    const slideIndex = parseInt(this.getAttribute('data-index'));
+                    showSlide(slideIndex);
+                });
+            });
+
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoplayInterval);
+            });
+
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+        });
+    </script>
+</section>
+
+
+    
+<section id="section2-2">
+    <div class="hero-content2">
+        <h2>¿Cómo Funciona?</h2>
+    </div>
+    <div class="content-wrapper2">
+        <div class="card">
+            <img src="../static/gifs/Monitoreo.gif" alt="Imagen 1">
+            <div class="card-content">
+                <h3>Monitoreo en tiempo real</h3>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../static/gifs/programacion_de_alimento.gif" alt="Imagen 2">
+            <div class="card-content">
+                <h3>Programación de comidas</h3>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../static/gifs/control remoto.gif" alt="Imagen 3">
+            <div class="card-content">
+                <h3>Control remoto</h3>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../static/gifs/Notificaciones.gif" alt="Imagen 4">
+            <div class="card-content">
+                <h3>Notificaciones</h3>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../static/gifs/Diseño.gif" alt="Imagen 5">
+            <div class="card-content">
+                <h3>Diseño elegante</h3>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../static/gifs/interaccion.gif" alt="Imagen 6">
+            <div class="card-content">
+                <h3>Interacciones remotas</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón de descarga del manual -->
+    <div class="download-manual">
+        <a href="../static/manuales/Manual_de_Instalacion_de_IoT.pdf" download class="download-btn">
+            📄 Descargar Manual de Configuración (PDF)
+        </a>
+    </div>
+
+    <style>
+        /* Sección General */
+        #section2-2 {
+            position: relative;
+            background: linear-gradient(135deg, #232526, #414345);
+            padding: 4rem 2rem;
+            text-align: center;
+            z-index: 5;
+            margin-top: 0;
+            min-height: 50vh;
+        }
+
+        /* Título de la Sección */
+        #section2-2 h2 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 1rem;
+            color: #f1ece1;
+            letter-spacing: 2px;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .hero-content2 {
+            margin-bottom: 3rem;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contenedor Principal */
+        .content-wrapper2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Tarjetas */
+        .card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-content {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 0 0 20px 20px;
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-content h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 550;
+            color: #f4b400;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.651);
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsivo Tablets */
+        @media (max-width: 992px) {
+            .content-wrapper2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsivo Móviles */
+        @media (max-width: 600px) {
+            .content-wrapper2 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content2 {
+                font-size: clamp(1.5rem, 3vw, 2rem);
+            }
+
+            .card {
+                max-width: 100%;
+            }
+        }
+
+        /* Estilo para botón de descarga */
+        .download-manual {
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #FFD166;
+            color: #232323;
+            font-weight: bold;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: rgb(170, 122, 1);
+            transform: translateY(-3px);
+        }
+    </style>
+</section>
+
+
+
+<!-- Sección 3: Aplicación Móvil -->
+<section id="section3">
+    <h2>Aplicación Móvil</h2>
+    <div class="app-container">
+        <div class="app-card">
+            <img src="../static/img/menu.jpg" alt="App Móvil 1">
+            <div class="app-content">
+                <h3>Interfaz amigable</h3>
+                <p>Diseño intuitivo que facilita el uso para cualquier persona.</p>
+            </div>
+        </div>
+        <div class="app-card">
+            <img src="../static/img/registrar.jpg" alt="App Móvil 2">
+            <div class="app-content">
+                <h3>Registro de mascota personalizado</h3>
+                <p>Gestiona de forma sencilla y segura toda la información sobre la salud, alimentación y bienestar de tu mascota.</p>
+            </div>
+        </div>
+        <div class="app-card">
+            <img src="../static/img/dispensador.jpg" alt="App Móvil 3">
+            <div class="app-content">
+                <h3>Monitoreo en tiempo real</h3>
+                <p>Obtén la información del nivel de alimento o agua en tu dispensador.</p>
+            </div>
+        </div>
+        <div class="app-card">
+            <img src="../static/img/notificaciones.jpg" alt="App Móvil 4">
+            <div class="app-content">
+                <h3>Alertas personalizadas</h3>
+                <p>Recibe notificaciones en tiempo real para estar al tanto de la actividad.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón para descargar el manual de la app -->
+    <div class="download-manual-app">
+        <a href="../static/manuales/Manual_de_Uso_de_la_Aplicacion.pdf" download class="download-btn-app">
+            📲 Descargar Manual de la App (PDF)
+        </a>
+        <p class="manual-note">
+            También puedes encontrar estos manuales dentro de la app, en la sección de <strong>Ajustes</strong>.
+        </p>
+    </div>
+
+    <!-- Estilos de la Sección 3 -->
+    <style>
+        /* Estilos generales */
+        #section3 {
+            padding: 6rem 3rem;
+            background: linear-gradient(to right, #e0e0e0, #f5f5f5);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #section3 h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-family: 'Fjalla One', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+        /* Contenedor principal */
+        .app-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* Tarjetas de la aplicación */
+        .app-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .app-content {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .app-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #444;
+            font-weight: bold;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .app-content p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Estilo para el botón de descarga */
+        .download-manual-app {
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .download-btn-app {
+            display: inline-block;
+            background-color: #FFD166;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-btn-app:hover {
+            background-color: #bc9a4c;
+            transform: translateY(-3px);
+        }
+
+        .manual-note {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #333;
+            font-style: italic;
+        }
+
+        /* Ajuste para pantallas grandes */
+        @media (min-width: 1400px) {
+            #section3 {
+                padding: 6rem 5rem;
+            }
+
+            .app-container {
+                padding: 0 4rem;
+            }
+        }
+
+        /* Responsivo: pantallas medianas */
+        @media (max-width: 992px) {
+            #section3 {
+                padding: 4rem 2rem;
+            }
+
+            .app-container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Responsivo: móviles con scroll horizontal */
+        @media (max-width: 768px) {
+            .app-container {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding: 1rem 1rem 2rem;
+            }
+
+            .app-card {
+                flex: 0 0 80%;
+                scroll-snap-align: start;
+                min-width: 260px;
+                max-width: 90%;
+            }
+
+            .app-card img {
+                height: 180px;
+            }
+
+            .app-content h3 {
+                font-size: 1.4rem;
+            }
+
+            .app-content p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Responsivo: pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            #section3 {
+                padding: 2rem 1rem;
+            }
+
+            #section3 h2 {
+                font-size: 2rem;
+            }
+
+            .app-container {
+                padding: 1rem 0.5rem;
+            }
+
+            .manual-note {
+                font-size: 0.95rem;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</section>
+
+
+
+<!-- Sección 3.1: Disponible en Play Store -->
+<section id="section3-qr">
+    <div class="qr-container">
+        <div class="qr-content">
+            <h2>¡Descarga Nuestra App Ahora!</h2>
+            <p>Disponible exclusivamente en <strong>Google Play Store</strong>. Escanea el código QR para descargarla o haz clic en el botón.</p>
+            <div class="qr-wrapper">
+                <img src="../static/img/qr-code2.png" alt="QR para descargar la App" class="qr-img">
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.autopet.utt" target="_blank" class="btn-playstore">
+                <img src="../static/img/google-play.png" alt="Descargar en Google Play">
+            </a>
+        </div>
+    </div>
+
+    <style>
+        /* Sección QR */
+        #section3-qr {
+            padding: 5rem 2rem;
+            background: linear-gradient(to right, #1a1a1a, #2c3e50);
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .qr-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .qr-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFD166; /* Amarillo vibrante */
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .qr-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* QR Estilo */
+        .qr-wrapper {
+            margin-bottom: 2rem;
+        }
+
+        .qr-img {
+            width: 200px;
+            height: auto;
+            border: 5px solid #FFD166;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Botón Play Store */
+        .btn-playstore img {
+            width: 180px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-playstore:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .qr-content h2 {
+                font-size: 2rem;
+            }
+
+            .qr-content p {
+                font-size: 1rem;
+            }
+
+            .qr-img {
+                width: 150px;
+            }
+
+            .btn-playstore img {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #section3-qr {
+                padding: 3rem 1rem;
+            }
+
+            .qr-container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</section>
+
+
+<!-- Sección 4: Dónde Comprar -->
+<section id="section4">
+    <h2>¿Dónde Comprar?</h2>
+    <p>Puedes adquirir <strong>AUTOPET UTT</strong> en tiendas autorizadas o en línea.</p>
+    <div class="row4">
+        <div class="column-left">
+            <form action="{% url 'enviar_correo' %}" method="POST">
+                {% csrf_token %}
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" required>
+            
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+            
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Escribe tu mensaje"></textarea>
+            
+                <button type="submit">Enviar</button>
+            </form>
+            
+            <!-- Mostrar mensajes de éxito/error -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            
+            
+        </div>
+        <div class="column-right">
+            <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d602.9934311942188!2d-97.96697905970073!3d19.386481798860708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cffced901ddce7%3A0x900a8087658724ce!2sUniversidad%20Tecnol%C3%B3gica%20de%20Tlaxcala!5e0!3m2!1ses-419!2smx!4v1712852712345!5m2!1ses-419!2smx" 
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Importamos Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+
+        /* Estilos de la Sección 4 */
+        #section4 {
+            padding: 4rem 2rem;
+            background-color: #000000; /* Fondo negro */
+            color: #fff;
+            text-align: center;
+        }
+
+        #section4 h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #FFD166; /* Amarillo vibrante */
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        #section4 p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .row4 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        /* Columna izquierda - Formulario */
+        .column-left {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        form {
+            background-color: #1f1f1f;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-align: left;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #FFD166;
+            border-radius: 8px;
+            background-color: #333;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            transition: border 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #FFA500;
+            outline: none;
+        }
+
+        /* Botón estilizado */
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #FFD166;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FFA500;
+            transform: translateY(-3px);
+        }
+
+        /* Columna derecha - Mapa */
+        .column-right {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .row4 {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .column-left, .column-right {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #section4 h2 {
+                font-size: 2.2rem;
+            }
+
+            form {
+                padding: 1.5rem;
+            }
+
+            button {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</section>
+
+
+<!-- Footer -->
+<!-- Pie de página con enlaces a los Términos y Condiciones, Avisos Legales y Política de Privacidad -->
+<footer>
+    <p>© 2025 <strong>AUTOPET UTT</strong> - Todos los derechos reservados.</p>
+    <div class="footer-links">
+        <a href="#" id="termsLink">Términos y Condiciones</a> |
+        <a href="#" id="legalLink">Avisos Legales</a> |
+        <a href="#" id="privacyLink">Política de Privacidad</a>
+    </div>
+</footer>
+
+<!-- Modal de Términos y Condiciones -->
+<div class="modal" id="termsModal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Términos y Condiciones</h5>
+            <span class="close" id="closeTerms" role="button" aria-label="Cerrar">&times;</span>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+            <h6>1. Introducción</h6>
+            <p>Bienvenido a AUTOPET UTT, un producto desarrollado por FutureTech. Nuestro dispensador automático para perros ha sido diseñado para ofrecer comodidad, tecnología y bienestar a tu mascota, permitiendo el control total a través de nuestra aplicación móvil. Al utilizar este sitio web y nuestro producto, aceptas estos Términos y Condiciones.</p>
+
+            <h6>2. Uso del servicio</h6>
+            <p>El uso de AUTOPET UTT está destinado únicamente a fines personales. El usuario se compromete a utilizar el dispositivo de manera responsable, siguiendo las indicaciones del manual y respetando las políticas de FutureTech.</p>
+
+            <h6>3. Funcionamiento del producto</h6>
+            <p>AUTOPET UTT permite programar horarios de alimentación, monitorear el dispensador en tiempo real, y recibir notificaciones en tu dispositivo móvil. La conexión a internet es requerida para ciertas funcionalidades.</p>
+
+            <h6>4. Responsabilidades del usuario</h6>
+            <p>El usuario es responsable de mantener actualizado el software del dispositivo y de la app, así como de garantizar una conexión estable. FutureTech no se hace responsable por mal uso del producto o negligencia en el mantenimiento.</p>
+
+            <h6>5. Privacidad de los datos</h6>
+            <p>Los datos recopilados a través de la app serán utilizados únicamente para mejorar la experiencia del usuario. No compartimos información personal con terceros sin consentimiento explícito.</p>
+
+            <h6>6. Garantía y soporte</h6>
+            <p>AUTOPET UTT incluye garantía de fabricación por 12 meses. Para soporte técnico, puedes contactarnos a través de nuestros canales oficiales disponibles en el sitio web.</p>
+
+            <h6>7. Modificaciones</h6>
+            <p>FutureTech se reserva el derecho de modificar estos términos en cualquier momento. Se recomienda revisar esta sección periódicamente.</p>
+
+            <div class="mt-4">
+                <button class="btn btn-primary" id="acceptTerms">Acepto los términos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Avisos Legales -->
+<div class="modal" id="legalModal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Avisos Legales</h5>
+            <span class="close" id="closeLegal" role="button" aria-label="Cerrar">&times;</span>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+            <h6>1. Responsabilidad</h6>
+            <p>El usuario es el único responsable de cumplir con las leyes locales, nacionales e internacionales aplicables al uso de este sitio web y del producto AUTOPET UTT. FutureTech no se responsabiliza por el uso indebido o ilegal que se le pueda dar a la información proporcionada o al dispositivo.</p>
+
+            <h6>2. Exclusión de Responsabilidad</h6>
+            <p>Este sitio y el producto AUTOPET UTT se ofrecen "tal cual", sin garantías de ningún tipo, expresas o implícitas. FutureTech no será responsable de daños directos, indirectos, incidentales o consecuentes derivados del uso del dispositivo, el software o este sitio web.</p>
+
+            <h6>3. Propiedad Intelectual</h6>
+            <p>Todos los contenidos, marcas, logotipos, nombres comerciales y diseños presentes en este sitio son propiedad exclusiva de FutureTech. Está prohibida su reproducción, distribución o uso sin autorización expresa.</p>
+
+            <h6>4. Enlaces Externos</h6>
+            <p>Este sitio puede contener enlaces a sitios web de terceros. FutureTech no se hace responsable del contenido, políticas o prácticas de dichos sitios externos.</p>
+
+            <h6>5. Modificaciones</h6>
+            <p>FutureTech se reserva el derecho de modificar este aviso legal en cualquier momento. Las modificaciones entrarán en vigor en el momento en que sean publicadas en este sitio web.</p>
+
+            <div class="mt-4">
+                <button class="btn btn-primary" id="acceptLegal">Acepto los avisos legales</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Política de Privacidad -->
+<div class="modal" id="privacyModal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Política de Privacidad</h5>
+            <span class="close" id="closePrivacy" role="button" aria-label="Cerrar">&times;</span>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+            <h6>1. Protección de Datos</h6>
+            <p>En FutureTech, respetamos y protegemos la privacidad de nuestros usuarios. Los datos personales recopilados a través del sitio o de la aplicación de AUTOPET UTT serán utilizados únicamente para ofrecer un mejor servicio y no serán compartidos con terceros sin el consentimiento expreso del usuario.</p>
+
+            <h6>2. Uso de Cookies</h6>
+            <p>Este sitio web utiliza cookies propias y de terceros para mejorar la experiencia del usuario, analizar estadísticas y personalizar contenidos. El usuario puede configurar su navegador para rechazar el uso de cookies, aunque esto podría afectar el correcto funcionamiento del sitio.</p>
+
+            <h6>3. Finalidad del Tratamiento de Datos</h6>
+            <p>La información personal que recopilamos se utiliza para gestionar el funcionamiento del dispositivo AUTOPET UTT, enviar notificaciones relevantes, ofrecer soporte técnico y mejorar continuamente nuestros productos y servicios.</p>
+
+            <h6>4. Seguridad de la Información</h6>
+            <p>Implementamos medidas de seguridad técnicas y organizativas para garantizar la confidencialidad, integridad y disponibilidad de los datos personales que procesamos.</p>
+
+            <h6>5. Derechos del Usuario</h6>
+            <p>Los usuarios tienen derecho a acceder, rectificar o eliminar sus datos personales, así como a limitar u oponerse a su tratamiento. Para ejercer estos derechos, puede contactarnos a través de los canales oficiales de FutureTech.</p>
+
+            <h6>6. Cambios en la Política</h6>
+            <p>Nos reservamos el derecho de modificar esta política de privacidad en cualquier momento. Cualquier cambio será publicado en este mismo sitio y entrará en vigor a partir de su publicación.</p>
+
+            <div class="mt-4">
+                <button class="btn btn-primary" id="acceptPrivacy">Acepto la política de privacidad</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Estilos para los modales -->
+<!-- Estilos para los modales -->
+<style>
+    /* Evitar el desplazamiento del body cuando el modal está abierto */
+    body.modal-open {
+        overflow: hidden; /* Previene el scroll */
+    }
+
+    .modal {
+        display: none; 
+        position: fixed; /* Fijo en la pantalla */
+        left: 0;
+        bottom: 0; /* El modal se coloca en la parte inferior */
+        width: 100%; /* Ancho completo */
+        height: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+        padding: 10px;
+        z-index: 9999; /* Asegura que el modal esté por encima de todo */
+        animation: slideUp 0.5s ease-out; /* Animación de aparición (opcional) */
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Ajustar el tamaño del modal */
+        margin: 0 auto; /* Centrado horizontal */
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .close {
+        font-size: 1.5rem;
+        color: #aaa;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+    }
+
+    /* Animación para que el modal suba desde la parte inferior */
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%); /* Comienza fuera de la pantalla */
+        }
+        to {
+            transform: translateY(0); /* Se mueve hacia la posición final */
+        }
+    }
+</style>
+
+
+
+
+<!-- JavaScript para abrir y cerrar los modales -->
+<script>
+    // Obtén los enlaces y modales
+    var termsLink = document.getElementById("termsLink");
+    var legalLink = document.getElementById("legalLink");
+    var privacyLink = document.getElementById("privacyLink");
+
+    var termsModal = document.getElementById("termsModal");
+    var legalModal = document.getElementById("legalModal");
+    var privacyModal = document.getElementById("privacyModal");
+
+    var closeTerms = document.getElementById("closeTerms");
+    var closeLegal = document.getElementById("closeLegal");
+    var closePrivacy = document.getElementById("closePrivacy");
+
+    var acceptTerms = document.getElementById("acceptTerms");
+    var acceptLegal = document.getElementById("acceptLegal");
+    var acceptPrivacy = document.getElementById("acceptPrivacy");
+
+    // Funciones para abrir modales
+    termsLink.onclick = function() {
+        termsModal.style.display = "block";
+        document.body.classList.add("modal-open"); // Evita el desplazamiento
+    }
+    legalLink.onclick = function() {
+        legalModal.style.display = "block";
+        document.body.classList.add("modal-open");
+    }
+    privacyLink.onclick = function() {
+        privacyModal.style.display = "block";
+        document.body.classList.add("modal-open");
+    }
+
+    // Funciones para cerrar modales
+    closeTerms.onclick = function() {
+        termsModal.style.display = "none";
+        document.body.classList.remove("modal-open"); // Restaura el desplazamiento
+    }
+    closeLegal.onclick = function() {
+        legalModal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+    closePrivacy.onclick = function() {
+        privacyModal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+
+    // Aceptar los términos y cerrar el modal
+    acceptTerms.onclick = function() {
+        // Puedes redirigir o hacer otras acciones
+        termsModal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+    acceptLegal.onclick = function() {
+        // Puedes redirigir o hacer otras acciones
+        legalModal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+    acceptPrivacy.onclick = function() {
+        // Puedes redirigir o hacer otras acciones
+        privacyModal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+
+    // Cerrar el modal si el usuario hace clic fuera del modal
+    window.onclick = function(event) {
+        if (event.target == termsModal) {
+            termsModal.style.display = "none";
+            document.body.classList.remove("modal-open");
+        }
+        if (event.target == legalModal) {
+            legalModal.style.display = "none";
+            document.body.classList.remove("modal-open");
+        }
+        if (event.target == privacyModal) {
+            privacyModal.style.display = "none";
+            document.body.classList.remove("modal-open");
+        }
+    }
+</script>
+
+
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('menu').classList.remove('show'); // Cierra el menú en móviles
+            });
+        });
+    </script>
+
+</body>
+</html>

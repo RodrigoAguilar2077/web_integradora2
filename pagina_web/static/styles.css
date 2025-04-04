@@ -1,0 +1,266 @@
+/* General */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+} 
+/* Navbar */
+
+/* Estilos del navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+}
+
+/* Color del navbar al hacer scroll */
+nav.scrolled {
+    background-color: #3d3d3d; /* Cambiado a un gris oscuro */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos del icono del menú para móviles */
+nav .menu-icon {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Estilos de la lista de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 8px; /* Espacio entre botones */
+    margin-right: 40px; /* ✅ Mueve los botones más hacia la izquierda */
+}
+
+/* Logo del navbar */
+nav ul li.logo img {
+    height: 60px;
+    width: auto;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* Estilos de los enlaces */
+nav ul li a {
+    display: block;
+    padding: 12px 18px; /* Padding reducido para que no se vean tan grandes */
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem; /* Tamaño ajustado */
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+    max-width: 130px; /* Máximo ancho para evitar que se extiendan demasiado */
+    text-align: center;
+}
+
+/* Color de enlaces al pasar el mouse */
+nav ul li a:hover {
+    background-color: #FFD166; /* Amarillo para destacar */
+    transform: translateY(-2px);
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #3d3d3d; /* Fondo fijo para móviles */
+    }
+
+    nav .menu-icon {
+        display: block;
+        color: white;
+    }
+
+    nav ul {
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        width: 100%;
+        align-items: flex-start;
+        background-color: #3d3d3d;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    nav ul.show {
+        max-height: 500px;
+    }
+
+    nav ul li {
+        text-align: left;
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 12px 15px; /* Ajuste en padding */
+        width: 100%;
+        text-align: left;
+    }
+
+    nav ul li.logo img {
+        height: 45px;
+        left: 20px;
+    }
+}
+
+
+
+
+/* Secciones */
+section {
+    height: 100vh;
+    padding: 2px;
+    padding-top: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+nav.scrolled {
+    background-color: #6b5b50; /* Color sólido cuando se hace scroll hacia abajo */
+}
+
+
+/* Sección 1 - Presentación *//* Los elementos deben estar en fila */
+/* Sección 2 - Características del IoT */
+#section2 {
+    background: #E7BA8A;
+    color: black;
+    text-align: center;
+    padding: -15px;
+}
+
+
+/* Sección 3 - App Móvil */
+#section3 {
+    background: #E7BA8A;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+#section3 h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#section3 p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 21;
+}
+
+#section3 img {
+    max-width: 40%;
+    height: auto;
+}
+
+/* Sección 4 - Dónde Comprar */
+#section4 {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+#section4 h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#section4 .map-container {
+    width: 100%;
+    max-width: 800px;
+}
+
+#section4 iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #222;
+    color: white;
+}
+
+/* fichas */
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Ajuste el ancho al 80% del contenedor padre */
+    max-width: 1000px; /* Ajuste el ancho máximo a 1000px */
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card:hover .card-content {
+    transform: translateY(0);
+}
+
+
+
