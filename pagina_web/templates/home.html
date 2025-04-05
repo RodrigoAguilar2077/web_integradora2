@@ -844,6 +844,107 @@
     </style>
 </section>
 
+<!-- Sección 4: Preguntas Frecuentes (FAQ) -->
+<section id="faq-section">
+    <div class="faq-container">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <h3>¿Necesito conexión a internet para usar el dispensador?</h3>
+            <p>Para controlar el dispensador desde la app, sí necesitas conexión Wi-Fi. Sin embargo, si pierde conexión, seguirá funcionando con los últimos horarios programados.</p>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <h3>¿Qué pasa si se va la luz?</h3>
+            <p>El dispositivo requiere estar conectado a la corriente eléctrica para funcionar. Si se va la luz, dejará de operar hasta que se restablezca el suministro.</p>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <h3>¿Qué tipo de croquetas admite el dispensador?</h3>
+            <p>Funciona mejor con croquetas secas de tamaño pequeño o mediano, para evitar bloqueos en el mecanismo.</p>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <h3>¿Puedo alimentar a más de una mascota con un solo dispensador?</h3>
+            <p>Está pensado para una sola mascota, pero si tus perros comparten comida, puedes usarlo para ambos.</p>
+        </div>
+    </div>
+
+    <style>
+        #faq-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(to right, #1a1a1a, #2c3e50);
+            color: #fff;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .faq-container h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #FFD166;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-item h3 {
+            font-size: 1.3rem;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .faq-item p {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            display: none;
+            color: #ccc;
+        }
+
+        .faq-item.open p {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .faq-container {
+                padding: 2rem 1rem;
+            }
+
+            .faq-container h2 {
+                font-size: 2rem;
+            }
+
+            .faq-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .faq-item p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleFAQ(element) {
+            element.classList.toggle('open');
+        }
+    </script>
+</section>
+
 
 <!-- Sección 4: Dónde Comprar -->
 <section id="section4">
